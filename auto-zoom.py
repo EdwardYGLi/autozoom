@@ -115,12 +115,8 @@ with open(csv_path) as csv_file:
 #sorting meeting list
 meeting_list = sorted(meeting_list, key = lambda x : x.start_time)
 start_time = time.time()
-loop_count = 0
 
 while len(meeting_list) > 0:
-
-	loop_count += 1
-
 	# if the first meeting on the list (aka, the current meeting) is not yet started, wait
 	if datetime.datetime.now() < meeting_list[0].start_time + datetime.timedelta(minutes=LATE_THRESHOLD):
 		while datetime.datetime.now() < meeting_list[0].start_time:
